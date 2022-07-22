@@ -1,4 +1,64 @@
+body {
+  background-color: aliceblue;
+}
 h1 {
+  font-family: "Lobster", cursive;
+  font-size: 60px;
+}
+
+.card {
+  width: 100%;
+  font-family: "Kiwi Maru", serif;
+  margin: 0 auto;
+  margin-top: 150px;
+  background: radial-gradient(
+    592px at 48.2% 50%,
+    rgba(255, 255, 249, 0.6) 0%,
+    rgb(160, 199, 254) 74.6%
+  );
+
+  border: 2px solid #343a40;
+}
+
+.time-of-day {
+  position: relative;
+  margin-top: 6px;
+}
+.local-temp-button {
+  padding: 0 auto;
+  border: none;
+  border-radius: 20px;
+  margin: 0 auto;
+  position: relative;
+  margin-top: -8px;
   text-align: center;
-  color: aquamarine;
+}
+
+.btn {
+  border: none;
+}
+
+.current-prevision {
+  margin-top: 30px;
+}
+.emoji {
+  font-size: 40px;
+}
+.temperature {
+  font-size: 40px;
+}
+.forecast {
+  text-align: center;
+}
+.col-2 {
+  border: 2px solid #343a40;
+  border-radius: 20%;
+  padding: 8px;
+}
+.emoji-forecast {
+  font-size: 100px;
+}
+footer {
+  text-align: center;
+  margin-top: 10px;
 }
