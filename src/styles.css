@@ -47,11 +47,13 @@ li {
 .current-prevision {
   margin-top: 30px;
 }
-.emoji {
-  font-size: 40px;
+.weather-temperature img {
+  margin-right: 5px;
+  height: 90px;
+  width: 90px;
   line-height: 1;
   position: relative;
-  top: 2px;
+  top: -12px;
 }
 .clearfix .temperature {
   font-size: 40px;
