@@ -43,17 +43,6 @@ function search(event) {
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", search);
 
-// Temperature Units to Celsius
-
-function changeCelsius(event) {
-  event.preventDefault();
-  let tempUnitC = document.querySelector("#temperature");
-  tempUnitC.innerHTML = "13";
-}
-
-let changeUnitCelsius = document.querySelector("#celsius-link");
-changeUnitCelsius.addEventListener("click", changeCelsius);
-
 // Temperature Units to Fahrenheit
 function changeFahrenheit(event) {
   event.preventDefault();
@@ -69,8 +58,12 @@ function showTemperature(response) {
   let temperature = Math.round(response.data.main.temp);
   let currentTemp = document.querySelector("#temperature");
   let h1 = document.querySelector("#city");
+  let humidityElement = document.querySelector("#humidity");
+  let windElement = document.querySelector("#wind");
   h1.innerHTML = `${response.data.name}`;
   currentTemp.innerHTML = `${temperature}`;
+  humidityElement.innerHTML = response.data.main.humidity;
+  windElement.innerHTML = Math.round(response.data.wind.speed);
 }
 
 function currentLocation(position) {
