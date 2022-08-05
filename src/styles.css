@@ -4,7 +4,7 @@ body {
 h1 {
   font-family: "Lobster", cursive;
   font-size: 60px;
-  margin-bottom: 0;
+  margin-bottom: 15px;
 }
 
 ul {
@@ -80,4 +80,8 @@ footer {
   border: 2px solid #343a40;
   border-radius: 20%;
   padding: 8px;
+}
+
+#description::first-letter {
+  text-transform: uppercase;
 }

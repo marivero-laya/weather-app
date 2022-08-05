@@ -43,6 +43,8 @@ function search(event) {
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", search);
 
+searchCity("New York");
+
 // Temperature Units to Fahrenheit
 function changeFahrenheit(event) {
   event.preventDefault();
@@ -58,11 +60,13 @@ function showTemperature(response) {
   let temperature = Math.round(response.data.main.temp);
   let currentTemp = document.querySelector("#temperature");
   let h1 = document.querySelector("#city");
+  let descriptionElement = document.querySelector("#description");
   let humidityElement = document.querySelector("#humidity");
   let windElement = document.querySelector("#wind");
   let iconElement = document.querySelector("#icon");
   h1.innerHTML = `${response.data.name}`;
   currentTemp.innerHTML = `${temperature}`;
+  descriptionElement.innerHTML = response.data.weather[0].description;
   humidityElement.innerHTML = response.data.main.humidity;
   windElement.innerHTML = Math.round(response.data.wind.speed);
   iconElement.setAttribute(
