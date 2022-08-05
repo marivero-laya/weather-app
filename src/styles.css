@@ -28,6 +28,7 @@ li {
   );
 
   border: 2px solid #343a40;
+  color: rgb(33, 37, 41);
 }
 
 .time-of-day {
@@ -47,6 +48,18 @@ li {
 .current-prevision {
   margin-top: 30px;
 }
+
+.current-prevision .active {
+  color: rgb(33, 37, 41);
+  cursor: default;
+  text-decoration: none;
+}
+
+.current-prevision .active:hover {
+  text-decoration: none;
+}
+
+.fahrenheit
 .weather-temperature img {
   margin-right: 5px;
   height: 90px;

@@ -40,20 +40,25 @@ function search(event) {
   searchCity(selectedCity.value);
 }
 
-let form = document.querySelector("#search-form");
-form.addEventListener("submit", search);
-
-searchCity("New York");
-
 // Temperature Units to Fahrenheit
 function changeFahrenheit(event) {
   event.preventDefault();
-  let tempUnitF = document.querySelector("#temperature");
-  tempUnitF.innerHTML = "66";
+  let fahrenheitTemperature = (celciusTemperature * 9) / 5 + 32;
+  changeUnitCelcius.classList.remove("active");
+  changeUnitFahrenheit.classList.add("active");
+  let currentTemp = document.querySelector("#temperature");
+  currentTemp.innerHTML = Math.round(fahrenheitTemperature);
 }
 
-let changeUnitFahrenheit = document.querySelector("#fahrenheit-link");
-changeUnitFahrenheit.addEventListener("click", changeFahrenheit);
+// Temperature Units to Celcius
+
+function changeCelcius(event) {
+  event.preventDefault();
+  changeUnitCelcius.classList.add("active");
+  changeUnitFahrenheit.classList.remove("active");
+  let currentTemp = document.querySelector("#temperature");
+  currentTemp.innerHTML = Math.round(celciusTemperature);
+}
 
 // Temp display by city search
 function showTemperature(response) {
@@ -64,6 +69,9 @@ function showTemperature(response) {
   let humidityElement = document.querySelector("#humidity");
   let windElement = document.querySelector("#wind");
   let iconElement = document.querySelector("#icon");
+
+  celciusTemperature = response.data.main.temp;
+
   h1.innerHTML = `${response.data.name}`;
   currentTemp.innerHTML = `${temperature}`;
   descriptionElement.innerHTML = response.data.weather[0].description;
@@ -90,5 +98,19 @@ function localTemp(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(currentLocation);
 }
+
+let celciusTemperature = null;
+
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", search);
+
+let changeUnitFahrenheit = document.querySelector("#fahrenheit-link");
+changeUnitFahrenheit.addEventListener("click", changeFahrenheit);
+
+let changeUnitCelcius = document.querySelector("#celcius-link");
+changeUnitCelcius.addEventListener("click", changeCelcius);
+
 let currentbutton = document.querySelector("#local-temp");
 currentbutton.addEventListener("click", localTemp);
+
+searchCity("New York");
