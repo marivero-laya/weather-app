@@ -22,6 +22,8 @@ function timeDay(currentDate) {
   }
   let formattedDate = `${day}, ${hour}:${minutes}`;
   return formattedDate;
+
+  backgroundImage(response);
 }
 let date = document.querySelector("#currentDate");
 date.innerHTML = timeDay(now);
@@ -84,6 +86,7 @@ function showTemperature(response) {
   iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
+// Display forecast for current location based on coordinates
 function currentLocation(position) {
   let latitude = position.coords.latitude;
   let longitude = position.coords.longitude;
@@ -98,6 +101,20 @@ function localTemp(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(currentLocation);
 }
+
+// Background changes color to dark theme between sunset & sunrise
+function backgroundImage(response) {
+  let colorElement = document.querySelector(".card");
+  let hour = new Date().getHours();
+  if (7 <= hour && hour < 20) {
+    colorElement.style.background =
+      "linear-gradient(179.1deg, rgb(247, 238, 238) -1.9%, rgb(247, 202, 201) 44.9%, rgb(145, 168, 208) 96.1%);";
+  } else {
+    colorElement.style.background =
+      "linear-gradient(0deg, rgb(119, 111, 113) 41%, rgb(116, 99, 158) 100%);";
+  }
+}
+
 
 let celciusTemperature = null;
 
