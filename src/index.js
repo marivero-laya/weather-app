@@ -60,6 +60,32 @@ function changeCelcius(event) {
   currentTemp.innerHTML = Math.round(celciusTemperature);
 }
 
+// Forecast
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = `<div class="row">`;
+  let days = ["Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+          <div class="col-2" id="day-forecast">
+            <h3>${day}</h3>
+            <img
+                  src="https://openweathermap.org/img/wn/50d@2x.png"
+                  alt=""
+                  width="42"
+                />
+            <div class="weather-forecast-temperatures">
+              <span class="weather-forecast-temperature.min">19°|</span>
+              <span class="weather-forecast-temperature.min">26°</span>  
+            </div>
+          </div>`;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 // Temp display by city search
 function showTemperature(response) {
   let temperature = Math.round(response.data.main.temp);
@@ -105,11 +131,11 @@ function backgroundImage() {
   let colorElement = document.querySelector(".card");
   let hour = new Date().getHours();
   if (hour >= 7 && hour < 20) {
-    colorElement.style.background =
-      "linear-gradient(179.1deg, rgb(247, 238, 238) -1.9%, rgb(247, 202, 201) 44.9%, rgb(145, 168, 208) 96.1%);";
+    colorElement.style.backgroundImage =
+      "linear-gradient(179.1deg, rgb(247, 238, 238) -1.9%, rgb(247, 202, 201) 44.9%, rgb(145, 168, 208) 96.1%)";
   } else {
-    colorElement.style.background =
-      "linear-gradient(0deg, rgb(119, 111, 113) 41%, rgb(116, 99, 158) 100%);";
+    colorElement.style.backgroundImage =
+      "linear-gradient(0deg, rgb(119, 111, 113) 41%, rgb(116, 99, 158) 100%)";
   }
 }
 backgroundImage();
@@ -129,3 +155,4 @@ let currentbutton = document.querySelector("#local-temp");
 currentbutton.addEventListener("click", localTemp);
 
 searchCity("New York");
+displayForecast();
