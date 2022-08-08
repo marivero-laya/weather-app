@@ -61,7 +61,8 @@ function changeCelcius(event) {
 }
 
 // Forecast
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data.daily);
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
   let days = ["Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
@@ -86,6 +87,13 @@ function displayForecast() {
   forecastElement.innerHTML = forecastHTML;
 }
 
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "5b59ec905ccba83d494beb36e2d1e6e9";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
+}
+
 // Temp display by city search
 function showTemperature(response) {
   let temperature = Math.round(response.data.main.temp);
@@ -108,6 +116,8 @@ function showTemperature(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
+
+  getForecast(response.data.coord);
 }
 
 // Display forecast for current location based on coordinates
@@ -155,4 +165,3 @@ let currentbutton = document.querySelector("#local-temp");
 currentbutton.addEventListener("click", localTemp);
 
 searchCity("New York");
-displayForecast();
