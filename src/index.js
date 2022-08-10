@@ -149,6 +149,11 @@ function currentLocation(position) {
   axios.get(apiUrl).then(showTemperature);
 }
 
+function clearFields() {
+  let cityValue = document.getElementById("#city-input");
+  cityValue.innerHTML = "";
+}
+
 function localTemp(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(currentLocation);
@@ -180,6 +185,6 @@ let changeUnitCelcius = document.querySelector("#celcius-link");
 changeUnitCelcius.addEventListener("click", changeCelcius);
 
 let currentbutton = document.querySelector("#local-temp");
-currentbutton.addEventListener("click", localTemp);
+currentbutton.addEventListener("click", localTemp, clearFields);
 
 searchCity("New York");
