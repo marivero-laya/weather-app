@@ -122,8 +122,6 @@ function showTemperature(response) {
 
   celciusTemperature = response.data.main.temp;
 
-  console.log(response.data);
-
   h1.innerHTML = `${response.data.name}`;
   currentTemp.innerHTML = `${temperature}`;
   descriptionElement.innerHTML = response.data.weather[0].description;
