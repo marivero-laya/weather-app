@@ -38,14 +38,42 @@ li {
   position: relative;
   margin-top: 6px;
 }
-.local-temp-button {
-  padding: 0 auto;
-  border-color: #999999c8;
-  border-radius: 20px;
+
+.search-bar {
+  padding: 0px;
+  position: relative;
+}
+#city-input {
+  position: relative;
+  width: 346px;
+}
+#search-button {
+  position: relative;
+  margin-left: 300px;
+  margin-top: -67px;
+  background-color: #ffffff;
+  border: #ced4da;
+}
+
+#search-button:hover {
+  background-color: #e0e0e0a1;
+}
+
+#local-temp {
   margin: 0 auto;
   position: relative;
-  margin-top: 1px;
+  height: 38px;
+  margin-left: 25px;
   text-align: center;
+  border: none;
+  font-size: 12px;
+  width: 100px;
+}
+
+#local-temp:hover {
+  border: black;
+  border-width: 1.5px;
+  border-style: solid;
 }
 
 .current-prevision {

@@ -19,7 +19,7 @@
   </head>
   <body>
     <div class="container">
-      <div class="card" style="width: 40rem">
+      <div class="card" style="width: 50rem">
         <div class="card-body">
           <div class="row top-row">
           <div class="col-5 time-of-day">
@@ -27,11 +27,14 @@
           </div>
           <div class="col-5 search-bar">
           <form id="search-form" class="mb-3 search-form">
-                <input type="search" placeholder="Search a city" class="form-control" id="city-input" autocomplete="off">
+                <input type="search" placeholder="Search a city" class="form-control float-left" id="city-input" autocomplete="off">
+                <input type="submit" value="🔍" class="btn btn-light float-left" id="search-button">
           </form>
           </div>
           <div class="col-2 local-temp-button">
-          <button id="local-temp" class="btn my-2 my-sm-0" type="submit">Current</button>
+          <button id="local-temp" class="btn btn-light" type="submit">My
+            <span>location</span>
+          </button>
           </div>
         </div>
         <div class="row overview">
@@ -40,7 +43,7 @@
             <ul>
               <li id="description"></li>
               <li>Humidity: <span id="humidity"></span>%</li>
-              <li>Wind: <span id="wind"></span> km/h</li>
+              <li>Wind: <span id="wind"></span> m/s</li>
             </ul>
           </div>
           <div class="col-5 current-prevision">
