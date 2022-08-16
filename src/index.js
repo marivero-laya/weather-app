@@ -43,21 +43,21 @@ function search(event) {
 // Temperature Units to Fahrenheit
 function changeFahrenheit(event) {
   event.preventDefault();
-  let fahrenheitTemperature = (celciusTemperature * 9) / 5 + 32;
-  changeUnitCelcius.classList.remove("active");
+  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
+  changeUnitCelsius.classList.remove("active");
   changeUnitFahrenheit.classList.add("active");
   let currentTemp = document.querySelector("#temperature");
   currentTemp.innerHTML = Math.round(fahrenheitTemperature);
 }
 
-// Temperature Units to Celcius
+// Temperature Units to Celsius
 
-function changeCelcius(event) {
+function changeCelsius(event) {
   event.preventDefault();
-  changeUnitCelcius.classList.add("active");
+  changeUnitCelsius.classList.add("active");
   changeUnitFahrenheit.classList.remove("active");
   let currentTemp = document.querySelector("#temperature");
-  currentTemp.innerHTML = Math.round(celciusTemperature);
+  currentTemp.innerHTML = Math.round(celsiusTemperature);
 }
 
 // Forecast
@@ -120,7 +120,7 @@ function showTemperature(response) {
   let windElement = document.querySelector("#wind");
   let iconElement = document.querySelector("#icon");
 
-  celciusTemperature = response.data.main.temp;
+  celsiusTemperature = response.data.main.temp;
 
   h1.innerHTML = `${response.data.name}`;
   currentTemp.innerHTML = `${temperature}`;
@@ -147,13 +147,10 @@ function currentLocation(position) {
   axios.get(apiUrl).then(showTemperature);
 }
 
-function clearFields() {
-  let cityValue = document.getElementById("#city-input");
-  cityValue.innerHTML = "";
-}
-
 function localTemp(event) {
   event.preventDefault();
+  let selectedCity = document.querySelector("#city-input");
+  selectedCity.value = "";
   navigator.geolocation.getCurrentPosition(currentLocation);
 }
 
@@ -171,7 +168,7 @@ function backgroundImage() {
 }
 backgroundImage();
 
-let celciusTemperature = null;
+let celsiusTemperature = null;
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", search);
@@ -179,10 +176,10 @@ form.addEventListener("submit", search);
 let changeUnitFahrenheit = document.querySelector("#fahrenheit-link");
 changeUnitFahrenheit.addEventListener("click", changeFahrenheit);
 
-let changeUnitCelcius = document.querySelector("#celcius-link");
-changeUnitCelcius.addEventListener("click", changeCelcius);
+let changeUnitCelsius = document.querySelector("#celsius-link");
+changeUnitCelsius.addEventListener("click", changeCelsius);
 
 let currentbutton = document.querySelector("#local-temp");
-currentbutton.addEventListener("click", localTemp, clearFields);
+currentbutton.addEventListener("click", localTemp);
 
 searchCity("New York");

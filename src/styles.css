@@ -116,6 +116,7 @@ li {
 footer {
   text-align: center;
   margin-top: 10px;
+  font-size: 14px;
 }
 #day-forecast {
   border: 2px solid #999999c8;
